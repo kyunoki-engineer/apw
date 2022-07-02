@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  web-server1:
+    container_name: apw-nginx01
+    image: nginx:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./html:/home/ec2-user/work/kyunoki/apw/web-server2/app/index.html
+
+
