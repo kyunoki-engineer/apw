@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+# DBのコンテナを記載
+
+  db:    
+    container_name: apw-db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDAM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
