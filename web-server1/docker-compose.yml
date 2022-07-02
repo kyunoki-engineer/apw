@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  web-server1:
+    container_name: apw-nginx01
+    image: nginx:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app/index.html
