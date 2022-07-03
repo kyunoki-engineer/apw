@@ -2,13 +2,15 @@ version: "3.8"
 
 services:
   web-server1:
-    container_name: apw-nginx01
-    image: nginx:latest
+    container_name: apw-apache02
+    image: httpd
     build:
       context: .
       dockerfile: Dockerfile
     restart: always
+    ports:
+      - "8080:8080"
     volumes:
-      - ./html:/home/ec2-user/work/kyunoki/apw/web-server2/app/index.html
+      - ./:/usr/local/apache2/htdocs
 
 
