@@ -1,10 +1,14 @@
-# apw
+# apwのディレクトリ構成、デプロイ先など
 〇apw のディレクトリ構成
+
 ・nginx(web-server1)
+
 ・apache(web-server2)
+
 ・mysql(web-db)
 
 ・nginx(web-server1)とapache(web-server2)では、
+
 　Dockerfile
 　docker-comopose.yml、
 　index.html
@@ -26,5 +30,7 @@ http://54.168.217.58/index.html
 
 〇今後の発展
 ・index.html表示から言語を使ったCRUDの実装。
-・Ansible等の自動構成ツールの導入。
+
+・Ansible等の自動構成ツールの導入
+
 ・AWSサービスのECSやEKSなどのDockerと併用されるAWSサービスをCloudFormatioやTerraformなどのIaC化を行なう。
