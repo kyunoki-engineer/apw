@@ -1,5 +1,5 @@
 # apwのディレクトリ構成、デプロイ先など
-〇apw のディレクトリ構成
+➀apw のディレクトリ構成
 
 ・nginx(web-server1)
 
@@ -7,25 +7,34 @@
 
 ・mysql(web-db)
 
-・nginx(web-server1)とapache(web-server2)では、
-
-　Dockerfile
-　docker-comopose.yml、
-　index.html
-
-上記の3ファイルを同階層で構成
 
 
-・web-db(mysql)
-　Dockerfile
-　docker-compose.yml
+➁nginx(web-server1)とapache(web-server2)では、
 
-上記の2ファイルを同階層で構成
+・Dockerfile
+
+ ・docker-comopose.yml
+ 
+ ・index.html
+ 
+ 
+ ・上記の3ファイルを同階層で構成
+
+
+➂web-db(mysql)
+
+　・Dockerfile
+ 
+　・docker-compose.yml
+ 
+  ・上記の2ファイルを同階層で構成
+
 
 
 〇AWSのEC2にはweb-server1のみをデプロイし、index.htmlをブラウザ表示できるようにしてあります。
 
-http://54.168.217.58/index.html
+・http://54.168.217.58/index.html
+
 
 
 〇今後の発展
