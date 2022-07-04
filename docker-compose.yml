@@ -9,6 +9,7 @@ services:
     restart: always
     volumes:
       - ./apache-server/app/index.html:/usr/local/apache2/htdocs/httpd2.4
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d  
     ports:
       - 8080:80
   
@@ -20,7 +21,7 @@ services:
       dockerfile: ./reverse-proxy/Dockerfile
     restart: always
     volumes:
-      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
     ports:
       - "80:80"
               
