@@ -8,8 +8,7 @@ services:
       dockerfile: ./apache-server/Dockerfile
     restart: always
     volumes:
-      - ./apache-server/index.html:/usr/local/apache2/htdocs/httpd2.4
-      - ./etc/nginx/conf.d:/etc/nginx/conf.d  
+      - .:/usr/local/apache2/htdocs/  
     ports:
       - 8080:80
   
@@ -21,7 +20,7 @@ services:
       dockerfile: ./reverse-proxy/Dockerfile
     restart: always
     volumes:
-      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "80:80"
               
@@ -42,5 +41,5 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./apw/web-db/conf/my.cnf:/etc/
-      - ./conf/db.cnf:/etc/mysql/conf.d/db.cnf
+      - ./mysql/volume:/var/lib/mysql
+      - ./mysql/db.cnf:/etc/mysql/conf.d/db.cnf
