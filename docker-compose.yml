@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  apache-server:
+    container_name: apache-server
+    image: httpd
+    build:
+      context: .
+      dockerfile: ./apache-server/Dockerfile
+    restart: always
+    volumes:
+      - ./apache-server/app/index.html:/usr/local/apache2/htdocs/httpd2.4
+    ports:
+      - 8080:80
+  
+  reverse-proxy:
+    container_name: reverse-proxy
+    image: nginx:latest
+    build:
+      context: .
+      dockerfile: ./reverse-proxy/Dockerfile
+    restart: always
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+              
+  db:
+    container_name: mysql-db
+    image: mysql:latest
+    build:
+      context: .
+      dockerfile: ./web-db/Dockerfile
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: apwdb
+      MYSQL_USER: user129
+      MYSQL_PASSWORD: user129
+      TZ: Asia/Tokyo
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3306:3306
+    volumes:
+      - ./apw/web-db/conf/my.cnf:/etc/
+      - ./conf/db.cnf:/etc/mysql/conf.d/db.cnf
