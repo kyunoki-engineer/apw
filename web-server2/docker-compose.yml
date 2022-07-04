@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  web-server1:
+    container_name: apw-apache02
+    image: httpd
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/usr/local/apache2/htdocs
+
+
